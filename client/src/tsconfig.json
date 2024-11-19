@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "jsx": "react", 
+    "target": "es2016", 
+    "module": "esnext",  // Set to "esnext" or "es2015"
+    "esModuleInterop": true, 
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,  
+    "skipLibCheck": true,  
+    "noImplicitAny": false,
+    "moduleResolution": "bundler",  // Use bundler for module resolution
+    "allowImportingTsExtensions": true,  // Allow importing .ts and .tsx extensions
+    "noEmit": true  // Prevent emitting output files (for bundlers)
+  }
+}

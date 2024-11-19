@@ -1,8 +1,15 @@
 import React from 'react';
 import clickSound from '../assets/click-sound.wav';
 
-function Break ({ timeLeft, isCounting, toggleTimer, restartTimer }) {
-  const formatTime = (time) => {
+interface BreakProps {
+  timeLeft: number;  // Time remaining in seconds
+  isCounting: boolean;  // Whether the timer is counting
+  toggleTimer: () => void;  // Function to toggle the timer's state
+  restartTimer: () => void;  // Function to restart the timer
+}
+
+const Break: React.FC<BreakProps> = ({ timeLeft, isCounting, toggleTimer, restartTimer }) => {
+  const formatTime = (time: number): string => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     return `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
@@ -30,7 +37,7 @@ function Break ({ timeLeft, isCounting, toggleTimer, restartTimer }) {
       </button> */}
 
     </div>
-  )
+  );
 }
 
 export default Break;
