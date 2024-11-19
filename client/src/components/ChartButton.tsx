@@ -8,11 +8,11 @@ interface ChartButtonProps {
 
 const ChartButton: React.FC<ChartButtonProps> = ({ toggleChart }) => {
   return (
-    <div>
+    
       <button className="chart-button" onClick={toggleChart}>
         <FaRegChartBar style={{ color: 'white', fontSize: '24px' }} />
       </button>
-    </div>
+    
   );
 };
 

@@ -257,9 +257,14 @@ function App(): JSX.Element {
             />
             )}
           </div>
-          <div className="lotus">
-            <LotusCount lotusCount={lotusCount} />
-          </div>
+          {
+            /*
+            <div className="lotus">
+              <LotusCount lotusCount={lotusCount} />
+            </div>
+            */
+          }
+          
           <div className="icons">
             {tomatoIcons.map((icon) => (
               <TomatoIcon key={icon.id} left={icon.left} />
