@@ -40,3 +40,5 @@ export const updateSettings = (req: Request, res: Response) => {
         }
     });
 };
+
+

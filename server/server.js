@@ -6,15 +6,9 @@
 // const app = express();
 // const PORT = 5001;
 
-<<<<<<< HEAD
 // // Enable CORS bañalds 
 // app.use(cors()); 
 // app.use(bodyParser.json());
-=======
-// Enable CORS bañalds new 2
-app.use(cors()); 
-app.use(bodyParser.json());
->>>>>>> b11564c85c3372b327734834c876f1234ae39a11
 
 // // Endpoint to update or add user settings
 // app.post('/settings', (req, res) => {
