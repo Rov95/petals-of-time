@@ -14,6 +14,8 @@ app.use(workHoursRoutes);
 
 const PORT = 5001;
 
+export default app;
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
