@@ -18,6 +18,7 @@ export const updateSettings = (req: Request, res: Response) => {
         query,
         [workPeriod, breakPeriod, longRest, sessionCount],
         function (err) {
+
         if (err) {
             console.error('Error updating settings:', err.message);
             res.status(500).json({ error: 'Failed to update settings' });
