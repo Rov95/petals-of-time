@@ -8,7 +8,7 @@ interface SettingsButtonProps {
 
 const SettingsButton: React.FC<SettingsButtonProps> = ({ toggleSettings }) => {
   return (
-    <div>
+    
       <button className="settings-button" onClick={toggleSettings}>
         <RiListSettingsLine style={{ color: 'white', fontSize: '24px' }} />
         {/* <img
@@ -17,7 +17,7 @@ const SettingsButton: React.FC<SettingsButtonProps> = ({ toggleSettings }) => {
           className="settings-icon"
         /> */}
       </button>
-    </div>
+    
   );
 }
 

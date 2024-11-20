@@ -50,13 +50,17 @@ const Work: React.FC<WorkProps> = ({
       {/* <button className="work-restart-button" onClick={() => { toggleTimer(); restartTimer(); }}>
         Restart
       </button> */}
-
-      <div className="session-info">
-        <p>{isWorkSession ? 'Work session' : 'Break session'}</p>
+      {
+        /*
+          <div className="session-info">
+            <p>{isWorkSession ? 'Work session' : 'Break session'}</p>
+            
+          
+            <p>{isWorkSession ? `Work Time: ${formatTime(workPeriod)}` : `Break Time: ${formatTime(breakPeriod)}`}</p>
+          </div>
+        */
+      }
       
-    
-        <p>{isWorkSession ? `Work Time: ${formatTime(workPeriod)}` : `Break Time: ${formatTime(breakPeriod)}`}</p>
-      </div>
     </div>
   );
 }
