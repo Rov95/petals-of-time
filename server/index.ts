@@ -16,7 +16,15 @@ const PORT = 5001;
 
 export default app;
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Server is running on http://localhost:${PORT}`);
+// });
+
+
+if (process.env.NODE_ENV !== 'test') {
+    const PORT = 5001;
+    app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
+}
 

@@ -12,6 +12,7 @@ export const updateWorkHours = (req: Request, res: Response) => {
     `;
 
     db.run(query, [date, work_time, completed_sessions], function (err) {
+        
         if (err) {
         console.error('Error updating work hours:', err.message);
         res.status(500).json({ error: 'Failed to update work hours' });

@@ -1,6 +1,10 @@
 # Node modules
 node_modules/
 
+# DB
+
+userData.db
+
 # Logs
 logs/
 *.log
