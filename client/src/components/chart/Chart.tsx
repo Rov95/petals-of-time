@@ -1,6 +1,7 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
+import './Chart.css'
 
 // Define the type for the work data
 interface WorkData {

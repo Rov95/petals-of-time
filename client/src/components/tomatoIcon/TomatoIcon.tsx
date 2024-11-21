@@ -1,5 +1,6 @@
 import React from 'react';
-import tomatoIcon from '../assets/tomato.png';  // Import CSS styles for the dropping animation
+import tomatoIcon from '../../assets/tomato.png';  // Import CSS styles for the dropping animation
+import './TomatoIcon.css'
 
 // Define the props interface to specify that 'left' is a string (CSS value)
 interface TomatoIconProps {

@@ -1,0 +1,50 @@
+
+.settings {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  column-gap: 10px;
+  row-gap: 30px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  width: 300px;
+}
+
+.settings div {
+  display: contents;
+}
+
+.settings label {
+  grid-column: 1 / 2;
+  font-size: 1.2rem;
+  color: #FFF;
+  text-align: left;
+  font-weight: 500;
+}
+
+.settings input {
+  grid-column: 2 / 3;
+  width: 50px;
+  height: 30px;
+  font-size: 1rem;
+  text-align: center;
+  border: 1px solid #c9c9c9;
+}
+
+.settings span {
+  grid-column: 3 / 4;
+  font-size: 1.2rem;
+  color: #FFF;
+  text-align: left;
+}
+
+.settings button {
+  grid-column: 1 / span 3;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 30px;
+  border: none;
+  height: 50px;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './LotusCount.css'
 
 // Define the props interface
 interface LotusCountProps {

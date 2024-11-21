@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaRegChartBar } from "react-icons/fa";
+import './ChartButton.css'
 
 // Define the props interface
 interface ChartButtonProps {
@@ -11,7 +12,7 @@ interface ChartButtonProps {
 const ChartButton: React.FC<ChartButtonProps> = ({ toggleChart, disabled }) => {
   return (
     <button
-      className="chart-button"
+      className="button chart-button"
       onClick={toggleChart}
       disabled={disabled}  // Disable the button if the chart is open
     >

@@ -1,5 +1,6 @@
 import React from "react";
 import { RiListSettingsLine } from "react-icons/ri";
+import './SettingsButton.css'
 
 // Define the props interface
 interface SettingsButtonProps {
@@ -11,7 +12,7 @@ interface SettingsButtonProps {
 const SettingsButton: React.FC<SettingsButtonProps> = ({ toggleSettings, disabled }) => {
   return (
     <button
-      className="settings-button"
+      className="button settings-button"
       onClick={toggleSettings}
       disabled={disabled} // Disable the button if the prop is true
     >

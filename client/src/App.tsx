@@ -1,14 +1,14 @@
 import './App.css';
-import Work from './containers/Work.tsx';
-import Break from './containers/Break.tsx';
-import StatusIndicator from './components/StatusIndicator.tsx';
-import Settings from './components/Settings.tsx';
-import SettingsButton from './components/SettingsButton.tsx';
-import Chart from './components/Chart.tsx';
-import ClockButton from './components/ClockButton.tsx';
-import ChartButton from './components/ChartButton.tsx';
-import BreakButton from './components/BreakButton.tsx'
-import ReturnButton from './components/ReturnButton.tsx';
+import Work from './containers/work/Work.tsx';
+import Break from './containers/break/Break.tsx';
+import StatusIndicator from './components/statusIndicator/StatusIndicator.tsx';
+import Settings from './components/settings/Settings.tsx';
+import SettingsButton from './components/settingsButton/SettingsButton.tsx';
+import Chart from './components/chart/Chart.tsx';
+import ClockButton from './components/clockButton/ClockButton.tsx';
+import ChartButton from './components/chartButton/ChartButton.tsx';
+import BreakButton from './components/breakButton/BreakButton.tsx'
+import ReturnButton from './components/returnButton/ReturnButton.tsx';
 import React, { useState, useEffect, useRef } from 'react';
 
 

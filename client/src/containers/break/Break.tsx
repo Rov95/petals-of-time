@@ -1,41 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import clickSound from '../assets/click-sound.wav';
+import clickSound from '../../assets/click-sound.wav';
+import './Break.css'
 
-interface WorkProps {
+interface BreakProps {
   timeLeft: number;  // Time remaining in seconds
   isCounting: boolean;  // Whether the timer is counting
   toggleTimer: () => void;  // Function to toggle the timer's state
   restartTimer: () => void;  // Function to restart the timer
-  isWorkSession: boolean;  // Whether it's a work or break session
-  workPeriod: number;  // Duration of the work period in seconds
+  isBreakSession: boolean;  // Whether it's a break session
   breakPeriod: number;  // Duration of the break period in seconds
-
 }
 
-
-const Work: React.FC<WorkProps> = ({
+const Break: React.FC<BreakProps> = ({
   timeLeft,
   isCounting,
   toggleTimer,
-  workPeriod,
+  restartTimer,
+  isBreakSession,
+  breakPeriod
 }) => {
   const formatTime = (time: number): string => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     return `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  };
+  }
 
   const playSound = () => {
     const audio = new Audio(clickSound);
     audio.play();
-  };
+  }
 
   const handleClick = () => {
     playSound();
     toggleTimer();
-  };
+  }
 
-  const [animationSpeed, setAnimationSpeed] = useState<number>(workPeriod);
+  const [animationSpeed, setAnimationSpeed] = useState<number>(breakPeriod);
 
   useEffect(() => {
     if (isCounting) {
@@ -45,21 +45,22 @@ const Work: React.FC<WorkProps> = ({
   }, [timeLeft, isCounting]);
 
   return (
-    <div className="work-timer">
+    <div className="break-timer">
       <h1>{formatTime(timeLeft)}</h1>
-      <button className="work-toggle-button" onClick={handleClick}>
+      <button className="break-toggle-button" onClick={handleClick}>
         {isCounting ? 'Pause' : 'Start'}
       </button>
 
-      <div className="egg-to-chick-container">
+      {/* This could represent some kind of animation to indicate a break */}
+      <div className="sleep-container">
         <div
-          className={`egg ${isCounting ? 'animate' : ''}`}
+          className={`sleep ${isCounting ? 'animate' : ''}`}
           style={{ animationDuration: `${animationSpeed}s` }}
         />
-        <div className="chick" />
+        <div className="sleep" />
       </div>
     </div>
   );
-};
+}
 
-export default Work;
+export default Break;

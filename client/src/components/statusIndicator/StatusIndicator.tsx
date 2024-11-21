@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import fireworksIcon from '../assets/fireworks.png';
-import bobaIcon from '../assets/boba.png';
-import successSound from '../assets/success-sound.wav';
-import sodaSound from '../assets/soda-sound.wav';
+import fireworksIcon from '../../assets/fireworks.png';
+import bobaIcon from '../../assets/boba.png';
+import successSound from '../../assets/success-sound.wav';
+import sodaSound from '../../assets/soda-sound.wav';
+import './StatusIndicator.css'
 
 // Define the props interface
 interface StatusIndicatorProps {

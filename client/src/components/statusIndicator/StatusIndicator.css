@@ -1,0 +1,37 @@
+.status {
+  display: flex;
+}
+
+.great-work {
+  color: #fff;
+  font-family: "Arial Rounded MT";
+}
+
+.great-work h1 {
+  font-size: 46px;
+  margin-bottom: 50px;
+}
+
+.great-work p {
+  margin-top: 50px;
+  font-size: large;
+}
+
+.break-is-over {
+  color: #fff;
+  font-family: "Arial Rounded MT";
+
+}
+
+.break-is-over h1 {
+  font-size: 46px;
+  margin-bottom: 50px;
+}
+.break-is-over img {
+  width: 250px;
+}
+
+.break-is-over p {
+  margin-top: 50px;
+  font-size: large;
+}

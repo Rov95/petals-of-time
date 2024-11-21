@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, ChangeEvent } from "react";
+import './Settings.css';
 
 // Define the props interface
 interface SettingsProps {

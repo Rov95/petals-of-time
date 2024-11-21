@@ -1,0 +1,94 @@
+.work-timer {
+  font-size: 3rem;
+  font-family: "Arial Rounded MT";
+  font-style: normal;
+  font-weight: 400;
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.work-timer .work-toggle-button {
+  width: 188px;
+  height: 74px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  background: #FFF;
+  color: #BA4949;
+  opacity: 0.8;
+  border: none;
+  font-family: "Arial Rounded MT Bold";
+  font-size: large;
+  transition: transform 0.1s ease, background-color 0.1s ease;
+}
+
+.work-timer .work-toggle-button:active {
+  transform: scale(0.95);
+  background-color: #e05a5a;
+}
+
+.egg-to-chick-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+
+.egg {
+  width: 167px;
+  height: 163px;
+  background-image: url('../../assets/egg.png');
+  background-size: contain;
+  transform-origin: center;
+  animation: eggAnimation infinite; /* Keep animation running */
+  animation-play-state: paused; /* Pause by default */
+}
+
+
+
+
+.egg.animate {
+  animation-play-state: running; /* Start animation when class is added */
+}
+
+
+
+
+.chick {
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/chick.png'); /* Your chick image */
+  background-size: cover;
+  display: none;
+}
+
+
+
+.egg-to-chick-container .egg-to-chick  , .sleep-container{
+  display: block;
+}
+
+@keyframes eggAnimation {
+  0% {
+    transform: rotate(0deg); /* Start with no rotation */
+  }
+  25% {
+    transform: rotate(-10deg); /* Tilt left */
+  }
+  50% {
+    transform: rotate(10deg); /* Tilt right */
+  }
+  75% {
+    transform: rotate(-10deg); /* Tilt left again */
+  }
+  100% {
+    transform: rotate(0deg); /* Return to the original position */
+  }
+}
