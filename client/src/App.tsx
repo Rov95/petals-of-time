@@ -1,15 +1,16 @@
 import './App.css';
 import Work from './containers/Work.tsx';
 import Break from './containers/Break.tsx';
-import LotusCount from './components/LotusCount.tsx';
 import StatusIndicator from './components/StatusIndicator.tsx';
 import Settings from './components/Settings.tsx';
 import SettingsButton from './components/SettingsButton.tsx';
 import Chart from './components/Chart.tsx';
+import ClockButton from './components/ClockButton.tsx';
 import ChartButton from './components/ChartButton.tsx';
+import BreakButton from './components/BreakButton.tsx'
 import ReturnButton from './components/ReturnButton.tsx';
-import TomatoIcon from './components/TomatoIcon.tsx';
 import React, { useState, useEffect, useRef } from 'react';
+
 
 // Define types for fetched settings and work hours data
 interface SettingsType {
@@ -37,15 +38,16 @@ function App(): JSX.Element {
   const [timeLeft, setTimeLeft] = useState<number>(workPeriod);
 
   const [isCounting, setIsCounting] = useState<boolean>(false);
-  const [isWorkSession, setIsWorkSession] = useState<boolean>(true);
+  const [isWorkSession, setIsWorkSession] = useState<boolean>(false);
   const [lotusCount, setLotusCount] = useState<number>(0);
   const [completedSessions, setCompletedSessions] = useState<number>(0);
+  const [isBreakSession, setIsBreakSession] = useState<boolean>(false); // Add break session
 
   const [isTransition, setIsTransition] = useState<boolean>(false);
   const [tranIsPaused, setTranIsPaused] = useState<boolean>(false);
   const [tranTime, setTranTime] = useState<number>(5);
 
-  const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(true);
   const [isChartOpen, setIsChartOpen] = useState<boolean>(false);
 
   const [lastUpdateDate, setLastUpdateDate] = useState<string>(
@@ -56,7 +58,17 @@ function App(): JSX.Element {
 
   const apiEndpoint = 'http://localhost:5001';
 
-
+  const toggleBreak = (): void => {
+    if (!isBreakSession) {
+      setIsBreakSession(true);
+      setIsWorkSession(false);
+      setTimeLeft(breakPeriod);
+    } else {
+      setIsBreakSession(false);
+      setIsWorkSession(true);
+      setTimeLeft(workPeriod);
+    }
+  };
   // Fetch settings from the backend
   useEffect(() => {
     const fetchSettings = async (): Promise<void> => {
@@ -99,7 +111,7 @@ function App(): JSX.Element {
     fetchWorkHours();
   }, [isChartOpen, lotusCount]);
 
-  // Reset lotus count and tomatoes on a new day
+  
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0];
     if (lastUpdateDate !== today) {
@@ -219,61 +231,124 @@ function App(): JSX.Element {
 
   return (
     <div className={`App ${isWorkSession ? 'work-session' : 'break-session'}`}>
-      {(isSettingsOpen || isChartOpen) && <ReturnButton backToHome={backToHome} />}
-      <SettingsButton toggleSettings={() => setIsSettingsOpen((prevState) => !prevState)} />
-      <ChartButton toggleChart={() => setIsChartOpen((prevState) => !prevState)} />
+      {(isSettingsOpen || isChartOpen || isWorkSession) && <ReturnButton backToHome={backToHome} />}
+  
+      {/* Settings Button */}
+      <SettingsButton
+        toggleSettings={() => {
+          // When Settings button is clicked, open settings and close chart
+          if (!isSettingsOpen) {
+            setIsSettingsOpen(true);
+            setIsWorkSession(false);
+            setIsChartOpen(false);// Close work
+            setIsBreakSession(false);
+              // Open settings
+            
+            ;// Close chart
+          }
+        }}
+        disabled={isSettingsOpen} // Disable button when settings page is open
+      />
+      
+      {/* Chart Button */}
+      <ChartButton
+        toggleChart={() => {
+          // When Chart button is clicked, open chart and close settings
+          if (!isChartOpen) {
+            setIsChartOpen(true);  // Open chart
+            setIsSettingsOpen(false);
+            setIsWorkSession(false); // Close settings
+            setIsBreakSession(false);
+          }
+        }}
+        disabled={isChartOpen} // Disable button when chart page is open
+      />
+
+      
+      {/* Break Button */}
+      <BreakButton 
+        toggleBreak={() => {
+          if (!isBreakSession) {
+            setIsBreakSession(true);
+            setIsSettingsOpen(false);
+            setIsWorkSession(false);
+            setIsChartOpen(false);
+          }
+        }}
+        disabled={isBreakSession}
+      />
+
+          
+           <ClockButton
+        toggleClock={() => {
+          console.log("Clock Button clicked!");
+          console.log("Current states:", { isWorkSession, isSettingsOpen, isChartOpen });
+          // When Settings button is clicked, open settings and close work
+          if (!isWorkSession) {
+            setIsWorkSession(true);  // Open settings
+            setIsSettingsOpen(false);
+            setIsChartOpen(false);// Close work
+            setIsBreakSession(false);
+            
+          }
+        }}
+        disabled={isWorkSession} // Disable button when settings page is open
+      />
+      
+      {/* Settings Section */}
       {isSettingsOpen ? (
         <Settings onSettingsChange={handleSettingsChange} closeSettings={() => setIsSettingsOpen(false)} />
       ) : isChartOpen ? (
+        // Chart Section
         <Chart workData={workHoursData} />
-      ) : (
-        <div>
-          <div className="main">
-            {isTransition ? (
-              <StatusIndicator
-                isWorkSession={isWorkSession}
-                pauseTran={pauseTran}
-                tranTime={tranTime}
-                tranIsPaused={tranIsPaused}
-              />
-            ) : isWorkSession ? (
-              <Work
-                timeLeft={timeLeft}
-                isCounting={isCounting}
-                toggleTimer={toggleTimer}
-                restartTimer={restartTimer}
-                isWorkSession={isWorkSession}
-                workPeriod={workPeriod}
-                breakPeriod={breakPeriod}
-                lotusCount={lotusCount}
-                completedSessions={completedSessions}
-              />
-            ) : (
-              <Break
+      ) : null} {/* No default content needed */}
+      
+      {/* Main Content when neither Settings nor Chart is open */}
+      {isSettingsOpen || isChartOpen ? null : (
+        <div className="main">
+          {isTransition ? (
+            <StatusIndicator
+              isWorkSession={isWorkSession}
+              pauseTran={pauseTran}
+              tranTime={tranTime}
+              tranIsPaused={tranIsPaused}
+            />
+          ) : isWorkSession ? (
+            <Work
               timeLeft={timeLeft}
               isCounting={isCounting}
               toggleTimer={toggleTimer}
               restartTimer={restartTimer}
-            />
-            )}
-          </div>
-          {
-            /*
-            <div className="lotus">
-              <LotusCount lotusCount={lotusCount} />
-            </div>
-            */
-          }
+              isWorkSession={isWorkSession}
+              workPeriod={workPeriod}
+              breakPeriod={breakPeriod}
           
-          <div className="icons">
-            {tomatoIcons.map((icon) => (
-              <TomatoIcon key={icon.id} left={icon.left} />
-            ))}
-          </div>
+          
+            />
+          ) : (
+            <Break
+              timeLeft={timeLeft}
+              isCounting={isCounting}
+              toggleTimer={toggleTimer}
+                  restartTimer={restartTimer}
+                  isBreakSession ={isBreakSession}
+                  breakPeriod={breakPeriod}
+            />
+          )}
         </div>
       )}
+      
+      {/* Optional Lotus Count Section */}
+      {/* <div className="lotus">
+        <LotusCount lotusCount={lotusCount} />
+      </div> */}
+      
+      {/* Icons Section */}
+ 
+    
     </div>
   );
 }
-
-export default App;
+  // Add the export default here:
+  export default App;
+  
