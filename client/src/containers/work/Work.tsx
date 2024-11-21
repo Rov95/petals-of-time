@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import clickSound from '../../assets/click-sound.wav';
 import './Work.css'
-
 interface WorkProps {
   timeLeft: number;  // Time remaining in seconds
   isCounting: boolean;  // Whether the timer is counting
