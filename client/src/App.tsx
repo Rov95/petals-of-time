@@ -54,7 +54,7 @@ function App(): JSX.Element {
     new Date().toISOString().split('T')[0]
   );
   const [workHoursData, setWorkHoursData] = useState<WorkHoursData[]>([]);
-  const [tomatoIcons, setTomatoIcons] = useState<TomatoIconType[]>([]);
+
 
   const apiEndpoint = 'http://localhost:5001';
 
@@ -164,14 +164,7 @@ function App(): JSX.Element {
     }
   };
 
-  const addTomatoIcon = (): void => {
-    const randomX = Math.random() * 90;
-    const newTomato = {
-      id: lotusCount,
-      left: `${randomX}%`,
-    };
-    setTomatoIcons((prevIcons) => [...prevIcons, newTomato]);
-  };
+
 
   // Countdown logic for work/break
   useEffect(() => {
@@ -186,7 +179,7 @@ function App(): JSX.Element {
       if (isWorkSession) {
         recordWorkSession(workPeriod / 60);
         setLotusCount((prevCount) => prevCount + 1);
-        addTomatoIcon();
+    
         setCompletedSessions((prevSessions) => prevSessions + 1);
       }
     }
