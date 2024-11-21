@@ -39,6 +39,15 @@
   width: 100%;
 }
 
+.work-session {
+  background-color: #BA4949; /* Red for work session */
+}
+
+.break-session {
+  background-color: #4973BA; /* Blue for break session */
+}
+
+
 
 
 

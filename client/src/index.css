@@ -22,11 +22,13 @@ code {
     monospace;
 }
 
-.work-session {
-  background-color: #BA4949; /* Red for work session */
+
+input[type=number]::-webkit-inner-spin-button {
+  opacity: 1;
 }
 
-.break-session {
-  background-color: #4973BA; /* Blue for break session */
+input[type=number] {
+  padding: 8px 4px 8px 2px;
+  font-family: sans-serif;
+  font-weight: 400;
 }
-

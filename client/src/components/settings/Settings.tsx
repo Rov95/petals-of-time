@@ -14,8 +14,8 @@ interface SettingsProps {
 }
 
 const Settings: React.FC<SettingsProps> = ({ onSettingsChange, closeSettings }) => {
-  const [workPeriodInput, setWorkPeriodInput] = useState<number>(0.1);
-  const [breakPeriodInput, setBreakPeriodInput] = useState<number>(1);
+  const [workPeriodInput, setWorkPeriodInput] = useState<number>(20);
+  const [breakPeriodInput, setBreakPeriodInput] = useState<number>(5);
   const [longRestInput, setLongRestInput] = useState<number>(1);
   const [sessionCountInput, setSessionCountInput] = useState<number>(4);
 
@@ -38,7 +38,7 @@ const Settings: React.FC<SettingsProps> = ({ onSettingsChange, closeSettings }) 
   return (
     <div className="settings">
       <div>
-        <label>Focus Period</label>
+        <label>Focus Session</label>
         <input
           type="number"
           value={workPeriodInput}
@@ -47,7 +47,7 @@ const Settings: React.FC<SettingsProps> = ({ onSettingsChange, closeSettings }) 
         <span>mins</span>
       </div>
       <div>
-        <label>Short Break</label>
+        <label>Break Session</label>
         <input
           type="number"
           value={breakPeriodInput}
@@ -55,24 +55,29 @@ const Settings: React.FC<SettingsProps> = ({ onSettingsChange, closeSettings }) 
         />
         <span>mins</span>
       </div>
-      <div>
-        <label>Long Rest</label>
-        <input
-          type="number"
-          value={longRestInput}
-          onChange={handleInputChange(setLongRestInput)}
-        />
-        <span>mins</span>
-      </div>
-      <div>
-        <label>Before Long Rest</label>
-        <input
-          type="number"
-          value={sessionCountInput}
-          onChange={handleInputChange(setSessionCountInput)}
-        />
-        <span>streaks</span>
-      </div>
+      {
+        /*
+          <div>
+          <label>Long Rest</label>
+          <input
+            type="number"
+            value={longRestInput}
+            onChange={handleInputChange(setLongRestInput)}
+          />
+          <span>mins</span>
+        </div>
+        <div>
+          <label>Before Long Rest</label>
+          <input
+            type="number"
+            value={sessionCountInput}
+            onChange={handleInputChange(setSessionCountInput)}
+          />
+          <span>streaks</span>
+        </div>
+        */
+      }
+      
       <button onClick={handleSave}>Save</button>
     </div>
   );
