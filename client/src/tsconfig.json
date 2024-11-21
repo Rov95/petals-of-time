@@ -10,6 +10,7 @@
     "noImplicitAny": false,
     "moduleResolution": "bundler",  // Use bundler for module resolution
     "allowImportingTsExtensions": true,  // Allow importing .ts and .tsx extensions
-    "noEmit": true  // Prevent emitting output files (for bundlers)
+    "noEmit": true,  // Prevent emitting output files (for bundlers)
+    "types": ["@testing-library/jest-dom"]
   }
 }
