@@ -23,7 +23,7 @@ describe('Work Hours Endpoints', () => {
         it('should return 500 if the database fails', async () => {
         const payload = {
             date: null, 
-            work_time: 120,
+            work_time: undefined,
             completed_sessions: 2,
         };
 
