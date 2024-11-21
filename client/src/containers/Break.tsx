@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import clickSound from '../assets/click-sound.wav';
 
 interface BreakProps {
@@ -6,9 +6,18 @@ interface BreakProps {
   isCounting: boolean;  // Whether the timer is counting
   toggleTimer: () => void;  // Function to toggle the timer's state
   restartTimer: () => void;  // Function to restart the timer
+  isBreakSession: boolean;  // Whether it's a break session
+  breakPeriod: number;  // Duration of the break period in seconds
 }
 
-const Break: React.FC<BreakProps> = ({ timeLeft, isCounting, toggleTimer, restartTimer }) => {
+const Break: React.FC<BreakProps> = ({
+  timeLeft,
+  isCounting,
+  toggleTimer,
+  restartTimer,
+  isBreakSession,
+  breakPeriod
+}) => {
   const formatTime = (time: number): string => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
@@ -25,6 +34,15 @@ const Break: React.FC<BreakProps> = ({ timeLeft, isCounting, toggleTimer, restar
     toggleTimer();
   }
 
+  const [animationSpeed, setAnimationSpeed] = useState<number>(breakPeriod);
+
+  useEffect(() => {
+    if (isCounting) {
+      const speed = Math.max(1, timeLeft / 10); // Dynamically adjust animation duration
+      setAnimationSpeed(speed);
+    }
+  }, [timeLeft, isCounting]);
+
   return (
     <div className="break-timer">
       <h1>{formatTime(timeLeft)}</h1>
@@ -32,10 +50,14 @@ const Break: React.FC<BreakProps> = ({ timeLeft, isCounting, toggleTimer, restar
         {isCounting ? 'Pause' : 'Start'}
       </button>
 
-{/*       <button className="work-restart-button" onClick={() => restartTimer()}>
-        End Break
-      </button> */}
-
+      {/* This could represent some kind of animation to indicate a break */}
+      <div className="sleep-container">
+        <div
+          className={`sleep ${isCounting ? 'animate' : ''}`}
+          style={{ animationDuration: `${animationSpeed}s` }}
+        />
+        <div className="sleep" />
+      </div>
     </div>
   );
 }

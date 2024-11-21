@@ -30,19 +30,34 @@
   right: 72px;
 }
 
-.settings-button, .back-button, .chart-button {
+.clock-button {
+  position: absolute;
+  top: 24px;
+  right: 120px;
+  padding-left: 10px;
+}
+
+.break-button {
+  position: absolute;
+  top: 24px;
+  right: 170px;
+  padding-left: 10px;
+}
+
+
+.settings-button, .back-button, .chart-button , .clock-button , .break-button{
   background-color: transparent;
   border: none;
   cursor: pointer;
   transition: transform 0.1s ease, background-color 0.1s ease;
 }
 
-.settings-button:hover, .back-button:hover, .chart-button:hover {
+.settings-button:hover, .back-button:hover, .chart-button:hover ,.clock-button:hover ,.break-button:hover{
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
 }
 
-.settings-button:active, .back-button:active, .chart-button:active {
+.settings-button:active, .back-button:active, .chart-button:active ,.clock-button:active ,.break-button:active{
   transform: scale(0.95);
   background-color: rgba(50, 50, 50, 0.1);
 }
@@ -172,6 +187,8 @@
   height: 50px;
 }
 
+
+
 .status {
   display: flex;
 }
@@ -238,5 +255,109 @@
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+
+/* Add this to your existing App.css */
+
+.egg-to-chick-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.sleep-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.egg {
+  width: 167px;
+  height: 163px;
+  background-image: url('./assets/egg.png');
+  background-size: contain;
+  transform-origin: center;
+  animation: eggAnimation infinite; /* Keep animation running */
+  animation-play-state: paused; /* Pause by default */
+}
+
+.sleep {
+  width: 204px;
+  height:199px;
+  background-image: url('./assets/sleep.png');
+  background-size: contain;
+  transform-origin: center;
+  animation: sleepAnimation infinite; /* Keep animation running */
+  animation-play-state: paused; /* Pause by default */
+}
+
+
+.egg.animate {
+  animation-play-state: running; /* Start animation when class is added */
+}
+
+
+.sleep.animate {
+  animation-play-state: running; /* Start animation when class is added */
+}
+
+
+.chick {
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/chick.png'); /* Your chick image */
+  background-size: cover;
+  display: none;
+}
+
+
+
+.egg-to-chick-container .egg-to-chick  , .sleep-container{
+  display: block;
+}
+
+@keyframes eggAnimation {
+  0% {
+    transform: rotate(0deg); /* Start with no rotation */
+  }
+  25% {
+    transform: rotate(-10deg); /* Tilt left */
+  }
+  50% {
+    transform: rotate(10deg); /* Tilt right */
+  }
+  75% {
+    transform: rotate(-10deg); /* Tilt left again */
+  }
+  100% {
+    transform: rotate(0deg); /* Return to the original position */
+  }
+}
+
+@keyframes sleepAnimation {
+  0% {
+    transform: rotate(0deg); /* Start with no rotation */
+  }
+  25% {
+    transform: rotate(-10deg); /* Tilt left */
+  }
+  50% {
+    transform: rotate(10deg); /* Tilt right */
+  }
+  75% {
+    transform: rotate(-10deg); /* Tilt left again */
+  }
+  100% {
+    transform: rotate(0deg); /* Return to the original position */
   }
 }

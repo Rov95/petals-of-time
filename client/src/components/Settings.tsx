@@ -26,7 +26,7 @@ const Settings: React.FC<SettingsProps> = ({ onSettingsChange, closeSettings }) 
       longRest: longRestInput,
       sessionCount: sessionCountInput,
     });
-    closeSettings(); // Close settings after saving
+  
   };
 
   // Event handler to change input values for numeric fields

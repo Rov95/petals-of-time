@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.9.0",
-    "@types/react-chartjs-2": "^2.0.2"
+    "@types/react-chartjs-2": "^2.0.2",
+    "ts-node": "^10.9.2"
   }
 }
