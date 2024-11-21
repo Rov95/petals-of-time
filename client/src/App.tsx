@@ -194,7 +194,7 @@ function App(): JSX.Element {
     } else if (tranTime === 0 && isTransition) {
       setIsTransition(false);
       if (isWorkSession) {
-        setTimeLeft(completedSessions < sessionCount ? breakPeriod : longRest);
+        setTimeLeft(completedSessions < sessionCount ? breakPeriod : breakPeriod);
         setIsWorkSession(false);
         setCompletedSessions((prev) => (prev < sessionCount ? prev : 0));
       } else {
@@ -326,6 +326,7 @@ function App(): JSX.Element {
                   restartTimer={restartTimer}
                   isBreakSession ={isBreakSession}
                   breakPeriod={breakPeriod}
+                  
             />
           )}
         </div>

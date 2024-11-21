@@ -17,7 +17,7 @@
   flex-shrink: 0;
   border-radius: 30px;
   background: #FFF;
-  color: #BA4949;
+  color: #a8ffa5;
   opacity: 0.8;
   border: none;
   font-family: "Arial Rounded MT Bold";
@@ -27,7 +27,7 @@
 
 .work-timer .work-toggle-button:active {
   transform: scale(0.95);
-  background-color: #e05a5a;
+  background-color: #a8ffa5;
 }
 
 .egg-to-chick-container {

@@ -14,9 +14,9 @@ interface SettingsProps {
 }
 
 const Settings: React.FC<SettingsProps> = ({ onSettingsChange, closeSettings }) => {
-  const [workPeriodInput, setWorkPeriodInput] = useState<number>(20);
+  const [workPeriodInput, setWorkPeriodInput] = useState<number>(0);
   const [breakPeriodInput, setBreakPeriodInput] = useState<number>(5);
-  const [longRestInput, setLongRestInput] = useState<number>(1);
+  const [longRestInput, setLongRestInput] = useState<number>(890);
   const [sessionCountInput, setSessionCountInput] = useState<number>(4);
 
   // Function to handle saving the settings
@@ -37,17 +37,8 @@ const Settings: React.FC<SettingsProps> = ({ onSettingsChange, closeSettings }) 
 
   return (
     <div className="settings">
-      <div>
-        <label>Focus Session</label>
-        <input
-          type="number"
-          value={workPeriodInput}
-          onChange={handleInputChange(setWorkPeriodInput)}
-        />
-        <span>mins</span>
-      </div>
-      <div>
-        <label>Break Session</label>
+         <div>
+        <label>First Session</label>
         <input
           type="number"
           value={breakPeriodInput}
@@ -55,6 +46,16 @@ const Settings: React.FC<SettingsProps> = ({ onSettingsChange, closeSettings }) 
         />
         <span>mins</span>
       </div>
+      <div>
+        <label>Second Session</label>
+        <input
+          type="number"
+          value={workPeriodInput}
+          onChange={handleInputChange(setWorkPeriodInput)}
+        />
+        <span>mins</span>
+      </div>
+   
       {
         /*
           <div>
